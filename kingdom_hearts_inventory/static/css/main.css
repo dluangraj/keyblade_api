@@ -2,6 +2,8 @@
 .ct-nav{
     display: flex;
     justify-content: space-between;
+    background-color: #5F6368;
+    border: 2px solid black; 
 }
 
 /* Target Main Logo Image */
@@ -90,6 +92,7 @@ ul#horizontal-list a:nth-last-child(1){
 #footer{
     border-top: 3px solid black;
     margin-top: 20vh;
+    background-color: #5F6368;
 }
 
 /* Profile Styles */
@@ -111,4 +114,8 @@ ul#horizontal-list a:nth-last-child(1){
     left: 20rem;
     top: 10rem;
     color:white
+}
+
+.container{
+    background-color: #5F6368;
 }

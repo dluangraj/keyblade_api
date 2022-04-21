@@ -9,10 +9,25 @@ from werkzeug.security import generate_password_hash, check_password_hash
 # import for Secrets module(given by Python)
 import secrets
 
+# import for Login Manager
+from flask_login import UserMixin
+
+# import for Flask Login
+from flask_login import LoginManager
+
+# import for Flask-Marshmallow
+from flask_marshmallow import Marshmallow
 
 db = SQLAlchemy()
+login_manager = LoginManager()
+ma = Marshmallow()
 
-class User(db.Model):
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(user_id)
+
+# make sure to add in UserMixin to User class
+class User(db.Model, UserMixin):
     id = db.Column(db.String, primary_key = True)
     first_name = db.Column(db.String(150), nullable = True, default = '')
     last_name = db.Column(db.String(150), nullable = True, default = '')
@@ -43,3 +58,35 @@ class User(db.Model):
 
     def __repr__(self):
         return f"User {self.email} has been added to the database!"
+
+class Character(db.Model):
+    id = db.Column(db.String, primary_key = True)
+    name = db.Column(db.String(150))
+    homeworld = db.Column(db.String(150))
+    weapon = db.Column(db.String(150))
+    species = db.Column(db.String(150))
+    gender = db.Column(db.String(150))
+    user_token = db.Column(db.String, db.ForeignKey('user.token'), nullable = False)
+
+    def __init__(self, name, homeworld, weapon, species, gender, user_token, id = ''):
+        self.id = self.set_id()
+        self.name = name
+        self.homeworld = homeworld
+        self.weapon = weapon
+        self.species = species
+        self.gender = gender
+        self.user_token = user_token
+
+    def __repr__(self):
+        return f"The following Character has been added: {self.name}"
+
+    def set_id(self):
+        return (secrets.token_urlsafe())
+
+# creation of API Schema via the Marshmallow Object
+class CharacterSchema(ma.Schema):
+    class Meta:
+        fields = ['id', 'name', 'homeworld', 'weapon', 'species', 'gender']
+
+character_schema = CharacterSchema()
+characters_schema = CharacterSchema(many = True)

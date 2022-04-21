@@ -3,18 +3,76 @@
 {% block content %}
 
 <header class="hero-section">
-    <h3 class="header-text">Welcome to Keyblade API! test@gmail.com</h3>
+    <h3 class="header-text">Welcome to Keyblade API! {{ current_user.email }}</h3>
 </header>
 
 <div class="container">
     <h3>Here are your profile details</h3>
     <ul class="list-group">
-        <li class="list-group-item">Email: test@gmail.com</li>
-        <li class="list-group-item">Token: </li>
+        <li class="list-group-item">Email: {{ current_user.email }}</li>
+        <li class="list-group-item">Token: {{ current_user.token }}</li>
         
          <!--TODO: Add Access Key-->
         
     </ul>
 </div>
+
+<!-- Footer Nav Bar -->
+    <footer class="row" id="footer">
+        <div class="col-2 col-md-2">
+        <img src="../../static/images/kingdom_hearts_logo.png" alt="Kingdom Hearts Logo" id="footer-logo"> 
+        </div>
+        <div class="col-2 col-md-2">
+            <div class="footer-text-flex">
+                <h4>Platform</h4>
+                <p>Why Keyblade API?</p>
+                <p>Keyblade API</p>
+                <p>Donate</p>
+                <p>Spread the word</p>
+                <p>Our Process</p>
+            </div>
+        </div>
+        <div class="col-2 col-md-2">
+            <div class="footer-text-flex">
+                <h4>Platform</h4>
+                <p>Why Keyblade API?</p>
+                <p>Keyblade API</p>
+                <p>Donate</p>
+                <p>Spread the word</p>
+                <p>Our Process</p>
+            </div>
+        </div>
+        <div class="col-2 col-md-2">
+            <div class="footer-text-flex">
+                <h4>Platform</h4>
+                <p>Why Keyblade API?</p>
+                <p>Keyblade API</p>
+                <p>Donate</p>
+                <p>Spread the word</p>
+                <p>Our Process</p>
+            </div>
+        </div>
+        <div class="col-2 col-md-2">
+            <div class="footer-text-flex">
+                <h4>Platform</h4>
+                <p>Why Keyblade API?</p>
+                <p>Keyblade API</p>
+                <p>Donate</p>
+                <p>Spread the word</p>
+                <p>Our Process</p>
+            </div>
+        </div>
+        <div class="col-2 col-md-2">
+            <div class="footer-text-flex">
+                <h4>Platform</h4>
+                <p>Why Keyblade API?</p>
+                <p>Keyblade API</p>
+                <p>Donate</p>
+                <p>Spread the word</p>
+                <p>Our Process</p>
+            </div>
+        </div>
+    </footer>
+
 
 {% endblock content %}
